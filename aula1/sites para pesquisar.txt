@@ -1,0 +1,4 @@
+w3schools.com/php
+w3schools.com/php/php_syntax.asp
+w3schools.com/php/php_datatypes.asp
+w3schools.com/php/php_
