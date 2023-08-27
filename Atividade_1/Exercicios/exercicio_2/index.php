@@ -1,7 +1,9 @@
 <?php
 require_once "../inc/cabecalho.php";
-require_once 'User.php';
+require_once "./ContaBancaria.php";
 
+
+session_start();
 
 ?>
 <hr class="invisible">
@@ -9,50 +11,47 @@ require_once 'User.php';
     <div class="container">
 
         <body>
-
-            <h1 class="display-6 tw-bold mb-5">
-                <?php if (isset($_POST['nome'])) {
-                    $usuario = new User($_POST['nome'], $_POST['idade'], $_POST['profissao']);
-                    if ($usuario->get_saldo() < 0) {
-                        $negativado = 1;
-                    } else {
-                        $negativado = 0;
+            <script>
+                function formatar(mascara, documento) {
+                    let i = documento.value.length;
+                    let saida = '#';
+                    let texto = mascara.substring(i);
+                    while (texto.substring(0, 1) != saida && texto.length) {
+                        documento.value += texto.substring(0, 1);
+                        i++;
+                        texto = mascara.substring(i);
                     }
+                }
+            </script>
+            <h1 class="display-6 tw-bold mb-5">
+                <?php if (isset($_SESSION['nome'], $_SESSION['conta'], $_SESSION['saldo'])) {     
+                    $conta = new ContaBancaria($_SESSION['nome'], $_SESSION['conta']);
+                    $conta->setSaldo($_SESSION['saldo']);
                 ?>
-
-                    <h6><?= $usuario->apresentar(); ?></h6>
-                    <?php
-                    if ($negativado) { ?>
+                    <h6><?= $conta->apresentar(); ?></h6>
+                    <br/>
                         <div class="container">
                             <br>
-                            <p>Aqui estão alguns cursos para que você possa ganhar dinheiro e sair do saldo negativo!</p>
-
-                            <h6>Cursos:</h6>
-                            <p>Introdução à PHP: https://www.curso1.com</p>
-                            <p>Programação Orientada à Objetos: https://www.curso2.com</p>
-                            <p>Integração de PHP ao Banco de Dados: https://www.curso3.com</p>
-                        </div>
-                    <?php } else { ?>
-                        <div class="container">
-                            <br>
-                            <p>Aqui estão alguns cursos para aprofundar seu conhecimento:</p>
-                            <h6>Cursos:</h6>
-                            <p>Introdução à PHP: https://www.curso1.com</p>
-                            <p>Programação Orientada à Objetos: https://www.curso2.com</p>
-                            <p>Integração de PHP ao Banco de Dados: https://www.curso3.com</p>
-                            <hr class="invisible">
-                            <h6>Produtos em promoção:</h6>
-                            <p>Produto A - R$ <?= rand(15, 50) ?></p>
-                            <p>Produto B - R$ <?= rand(1, 25) ?></p>
-                            <p>Produto C - R$ <?= rand(25, 100) ?></p>
+                            <form action="./movimentacaoBancaria.php" method="post">
+                                <input type="number" id="saque">
+                                <button type="submit">Sacar</button>
+                            </form>
+                            <?php if (isset($_GET['erro'])){ ?>
+                                <p class="bold alert">Saldo insuficiente</p>
+                            <?php } ?>
+                            <form action="./movimentacaoBancaria.php" method="post">
+                                <input type="number" id="deposito">
+                                <button type="submit">Depositar</button>
+                            </form>
+                            <br><br>
+                            <a href="logout.php" class="btn btn-primary">Logout</a>
                         </div>
 
-                    <?php }
-                } else { ?>
-                    Faça seu login
+                <?php } else { ?>
+                    Insira suas informações
             </h1>
             <div class="lg d-flex align-items-center justify-content-center">
-                <form method="post" action="" style="min-width: 50vh;">
+                <form method="post" action="fazLogin.php" style="min-width: 50vh;">
                     <!-- Name input -->
                     <div class="">
                         <label for="nome">Nome</label>
@@ -62,16 +61,11 @@ require_once 'User.php';
 
                     <!-- Age input -->
                     <div class="">
-                        <label for="idade">Idade</label>
+                        <label for="conta">Número da Conta</label>
 
-                        <input type="number" id="idade" class="form-control" name="idade" />
+                        <input type="text" id="conta" class="form-control" name="conta" maxlength="7" onkeypress="formatar('#####-#', this)"/>
                     </div>
-                    <!-- Profession Input -->
-                    <div class="">
-                        <label for="profissao">Profissão</label>
 
-                        <input type="selection" id="profissao" class="form-control" name="profissao" />
-                    </div>
 
                     <!-- 2 column grid layout for inline styling -->
                     <div class="row mb-4">

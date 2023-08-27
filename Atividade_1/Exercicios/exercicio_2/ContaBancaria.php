@@ -25,6 +25,19 @@
             return $this->saldo;
         }
 
+        function setSaldo($saldo)
+        {
+            $this->saldo = $saldo;
+        }
+
+
+
+        function apresentar()
+        {
+            echo "Bem vindo, $this->titular.<br>";
+            echo "Saldo na conta: $this->saldo";
+        }
+
         function sacar($valor)
         {
             if($valor > $this->saldo){
