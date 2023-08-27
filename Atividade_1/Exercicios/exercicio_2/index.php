@@ -33,14 +33,14 @@ session_start();
                         <div class="container">
                             <br>
                             <form action="./movimentacaoBancaria.php" method="post">
-                                <input type="number" id="saque">
+                                <input type="number" id="saque" name="saque">
                                 <button type="submit">Sacar</button>
                             </form>
                             <?php if (isset($_GET['erro'])){ ?>
                                 <p class="bold alert">Saldo insuficiente</p>
                             <?php } ?>
                             <form action="./movimentacaoBancaria.php" method="post">
-                                <input type="number" id="deposito">
+                                <input type="number" id="deposito" name="deposito">
                                 <button type="submit">Depositar</button>
                             </form>
                             <br><br>

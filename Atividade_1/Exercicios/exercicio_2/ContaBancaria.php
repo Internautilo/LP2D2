@@ -2,7 +2,7 @@
     class ContaBancaria{
         private $titular;
         private $numeroConta;
-        private $saldo;
+        private int $saldo;
 
         function __construct($titular, $numeroConta)
         {
@@ -41,9 +41,9 @@
         function sacar($valor)
         {
             if($valor > $this->saldo){
-                return -1;
+                return 0;
             } else {
-                $this->saldo -= $valor;
+                $this->saldo = $this->saldo - $valor;
             }
         }
         function depositar($valor)
