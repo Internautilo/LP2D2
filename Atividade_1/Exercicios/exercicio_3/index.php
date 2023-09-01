@@ -17,25 +17,14 @@
                 <th class="d-flex justify-content-center"><h5>Exercicios</h5></th>
                 <tr></tr>
                 <td>
-                    <a href="exercicio_1" class="btn btn-primary">Exercicio 1</a>
+                    <a href="./cadastrarProduto.php" class="btn btn-primary">Cadastrar Produtos</a>
                 </td>
                 <br>
                 <tr></tr>
                 <td>
-                    <a href="exercicio_2" class="btn btn-primary">Exercicio 2</a>
+                    <a href="./visualizarProdutos.php" class="btn btn-primary">Visualizar Produtos  </a>
                 </td>
                 <tr></tr>
-                <td>
-                    <a href="exercicio_3" class="btn btn-primary">Exercicio 3</a>
-                </td>
-                <tr></tr>
-                <td>
-                    <a href="exercicio_4" class="btn btn-primary">Exercicio 4</a>
-                </td>
-                <tr></tr>
-                <td>
-                    <a href="exercicio_5" class="btn btn-primary">Exercicio 5</a>
-                </td>
             </table>
         </div>
     </div>
