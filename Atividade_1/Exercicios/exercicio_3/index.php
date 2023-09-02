@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade 1 - LP2D3</title>
-    <?php require_once './cabecalho.php'; 
-            error_reporting(1);
+    <?php
+    ini_set('display_errors', 1);
+    error_reporting(1);
+    require_once '../inc/cabecalho.php'; 
     ?>
 </head>
 
@@ -19,7 +21,7 @@
                 <th class="d-flex justify-content-center"><h5>Exercicios</h5></th>
                 <tr></tr>
                 <td>
-                    <a href="./cadastrarProduto.php" class="btn btn-primary">Cadastrar Produtos</a>
+                    <a href="./cadastrarProdutos.php" class="btn btn-primary">Cadastrar Produtos</a>
                 </td>
                 <br>
                 <tr></tr>
