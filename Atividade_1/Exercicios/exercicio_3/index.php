@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade 1 - LP2D3</title>
-    <?php require_once './cabecalho.php'; ?>
+    <?php require_once './cabecalho.php'; 
+            error_reporting(1);
+    ?>
 </head>
 
 <body>
