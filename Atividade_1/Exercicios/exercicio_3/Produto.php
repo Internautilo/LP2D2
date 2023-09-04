@@ -10,11 +10,6 @@ class Produto {
         $this->$preco = $preco;
     }
 
-    
-
-
-
-
     public function getPreco()
     {
         return $this->preco;

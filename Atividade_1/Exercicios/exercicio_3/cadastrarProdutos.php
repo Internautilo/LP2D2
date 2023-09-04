@@ -2,6 +2,7 @@
 require_once "../inc/cabecalho.php";
 require_once 'Produto.php';
 
+session_start();
 
 ?>
 <hr class="invisible">
@@ -24,9 +25,9 @@ require_once 'Produto.php';
 
                     <!-- Age input -->
                     <div class="">
-                        <label for="preco">Preço</label>
+                        <label for="valor">Preço</label>
 
-                        <input type="number" id="preco" class="form-control" name="preco" />
+                        <input type="number" id="valor" class="form-control" name="valor" />
                     </div>
                     <!-- 2 column grid layout for inline styling -->
                     <div class="row mb-4">
