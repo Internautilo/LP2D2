@@ -1,24 +1,23 @@
 <?php
 
 require "./Produto.php";
+require "./Database.php";
 
 ini_set('display_errors', 1);
 error_reporting(1);
 
-session_start();
 $nome = $_POST['nome'];
 $valor = $_POST['valor'];
 
-$produto = new Produto($nome, $valor);
 
-//$produtos[] = $_SESSION['produtos'];
-//$produtos += $arrProduto;
-if(!is_array($_SESSION['produtos'])){
-    $_SESSION['produtos'] = [];
-}
+$pdo = Database::conexao();
 
-$_SESSION['produtos'] += (array)$produto;
 
-var_dump($_SESSION);
+$stmt = $pdo->prepare("
+    insert into produtos (nomeProduto, valorProduto) values(:nome, :valor);    
+");
+$stmt->bindParam(':nome', $nome);
+$stmt->bindParam(':valor', $valor);
+$stmt->execute();
 
-//header("Location: cadastrarProdutos.php"); exit;
+header("Location: cadastrarProdutos.php?sucesso=1"); exit;

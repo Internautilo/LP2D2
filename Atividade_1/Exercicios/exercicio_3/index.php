@@ -1,8 +1,8 @@
 <?php
-    ini_set('display_errors', 1);
-    error_reporting(1);
-    require_once '../inc/cabecalho.php'; 
-    session_start();
+ini_set('display_errors', 1);
+error_reporting(1);
+require_once '../inc/cabecalho.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -13,26 +13,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade 1 - LP2D3</title>
-    
+
 </head>
 
 <body>
-    <div class="main align-items-center justify-content-center" id="flex-container">
+    <hr class="invisible vr" style="height: 200;">
+
+    <div class="main align-items-center justify-content-center">
         <div class="d-flex justify-content-center align-items-center">
-            <hr class="invisible vr" style="height: 500px;">
-            <table class="d-flex align-items-center">
-                <th class="d-flex justify-content-center"><h5>Exercicios</h5></th>
-                <tr></tr>
-                <td>
-                    <a href="./cadastrarProdutos.php" class="btn btn-primary">Cadastrar Produtos</a>
-                </td>
-                <br>
-                <tr></tr>
-                <td>
-                    <a href="./visualizarProdutos.php" class="btn btn-primary">Visualizar Produtos  </a>
-                </td>
-                <tr></tr>
-            </table>
+            <h3>Exercicio 3 - Cadastro e Visualização de Produtos</h3>
+        </div>
+        <hr class="invisible vr" style="height: 50;">
+        <div class="d-flex justify-content-center">
+            <a href="./cadastrarProdutos.php" class="btn btn-rounded btn-primary btn-lg">Cadastro de Produtos</a>
+        </div>
+        <hr class="invisible">
+        <div class="d-flex justify-content-center">
+            <a href="./visualizarProdutos.php" class="btn btn-rounded btn-primary btn-lg">Listagem de Produtos</a>
         </div>
     </div>
 </body>
