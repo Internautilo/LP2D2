@@ -2,6 +2,7 @@
 require_once "./Produto.php";
 require_once "../inc/cabecalho.php";
 require "./Database.php";
+session_start();
 
 ini_set('display_errors', 1);
 error_reporting(1);
