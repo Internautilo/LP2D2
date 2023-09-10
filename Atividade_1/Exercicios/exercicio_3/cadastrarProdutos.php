@@ -15,9 +15,12 @@ session_start();
                 Cadastro de Produtos
             </h1>
             <?php if ($_GET['sucesso'] == 1) { ?>
-                <div class="alert alert-success alert-dismissible alert-sm">
-                    Produto Cadastrado com Sucesso !!!
+                <div class="d-flex justify-content-center">
+                    <div class="alert alert-success alert-sm" role="alert">
+                        Produto Cadastrado com Sucesso !!!
+                    </div>
                 </div>
+
             <?php } ?>
             <div class="lg d-flex align-items-center justify-content-center">
 

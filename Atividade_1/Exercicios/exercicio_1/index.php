@@ -85,7 +85,10 @@ require_once 'User.php';
                 </form>
             </div>
     </div>
-
+    <hr class="invisible" style="height: 75px;">
+        <div class="d-flex justify-content-center">
+            <a href="../index.php" class="btn btn-rounded btn-primary btn-lg">Voltar ao Início</a>
+        </div>
 <?php }
 
 ?>
