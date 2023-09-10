@@ -2,17 +2,12 @@
 class Produto {
 
     private $nome;
-    private $preco;
+    private $valor;
 
-    function __construct($nome, $preco)
+    function __construct($nome, $valor)
     {
         $this->nome = $nome;
-        $this->$preco = $preco;
-    }
-
-    public function getPreco()
-    {
-        return $this->preco;
+        $this->valor = $valor;
     }
 
     public function setNome($nome)
@@ -22,15 +17,20 @@ class Produto {
         return $this;
     }
 
-    public function setPreco($preco)
-    {
-        $this->preco = $preco;
-
-        return $this;
-    }
-
     public function getNome()
     {
         return $this->nome;
+    }
+
+    public function getValor()
+    {
+        return $this->valor;
+    }
+
+    public function setValor($valor)
+    {
+        $this->valor = $valor;
+
+        return $this;
     }
 }

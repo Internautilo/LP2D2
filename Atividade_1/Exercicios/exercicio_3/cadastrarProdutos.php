@@ -15,7 +15,12 @@ session_start();
                 Cadastro de Produtos
             </h1>
             <div class="lg d-flex align-items-center justify-content-center">
-                <form method="post" action="" style="min-width: 50vh;">
+                <?php if($_SESSION['sucesso'] = 1){ ?>
+                    <div class="alert alert-success alert-dismissible">
+                        Produto Cadastrado com Sucesso !!!
+                    </div>
+                <?php   $_SESSION['sucesso'] = 0;   } ?>
+                <form method="post" action="./cadastrarProduto.php" style="min-width: 50vh;">
                     <!-- Name input -->
                     <div class="">
                         <label for="nome">Nome</label>
@@ -41,6 +46,7 @@ session_start();
                 </form>
             </div>
     </div>
+    <a href="index.php" class="btn btn-primary">Voltar</a>
 </body>
 </div>
 <script>
