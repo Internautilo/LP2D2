@@ -3,7 +3,15 @@ ini_set('display_errors', 1);
 error_reporting(1);
 require_once '../inc/cabecalho.php';
 
-require './'
+require './Curso.php';
+
+
+$curso1 = new Curso("API Laravel", "https://www.youtube.com/watch?v=AO3gug_3DRs&t=1809s");
+$curso2 = new Curso("Git", "https://youtu.be/Zwv9qRyVeU4");
+$curso3 = new Curso("Git Flow", "https://youtu.be/oweffeS8TRc?si=yk7-GrUGMp2OPQCu");
+
+$arrayCursos = array($curso1, $curso2, $curso3);
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +33,7 @@ require './'
             <h3>Exercicio 4 - Catálogo de Cursos</h3>
         </div>
         <hr class="invisible vr" style="height: 25;">
-        < <div class="container justify-content-center align-items-center">
+        <div class="container justify-content-center align-items-center">
             <hr class="invisible">
             <div class="contaniner d-flex justify-content-center">
                 <h2>Lista de Cursos</h2>
@@ -38,20 +46,27 @@ require './'
                 </thead>
 
                 <tbody class="align-middle">
-                    <th></th>
-                    <td></td>
-                    <td></td>
+
+                    <?php
+                    $id = 0;
+                    foreach ($arrayCursos as $curso) {
+                    ?>
+                        <tr>
+                            <th><?= $id + 1 ?></th>
+                            <td><?= $curso->getNome() ?></td>
+                            <td><?= $curso->getLink() ?></td>
+                        </tr>
+                    <?php $id++;
+                    } ?>
+
                 </tbody>
 
             </table>
             <vr class="vr invisible" style="height: 100px;"></vr>
             <div class="d-flex align-items-center justify-content-center">
-                <a href="index.php" class="btn btn-lg btn-rounded btn-primary">Voltar</a>
+                <a href="../index.php" class="btn btn-lg btn-rounded btn-primary">Voltar ao Início</a>
             </div>
-
-
-    </div>
-    </div>
+        </div>
 </body>
 
 </html>
