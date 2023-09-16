@@ -1,15 +1,13 @@
 <?php
-include '../inc/Navbar.php';
-
-use Navbar;
-
+include('HeaderFooterNav.php');
 
 ini_set('display_errors', 1);
 error_reporting(1);
 session_start();
 
+HeaderFooterNav::includeHeader();
 
-Navbar::include();
+HeaderFooterNav::includeNavbar();
 
 ?>
 
@@ -49,7 +47,7 @@ Navbar::include();
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block" style="width: 470;">Entrar</button>
+                <button type="submit" class="btn btn-block" style="width: 470px; background-color: rgb(150, 120, 0);">Entrar</button>
 
             </form>
 
@@ -57,6 +55,6 @@ Navbar::include();
     </div>
     <hr class="vr invisible" style="height: 50;">
     <div class="d-flex justify-content-center" role="button">
-        <a href="./index.php" class="btn btn-primary btn-rounded " style="width: 200px;">Voltar</a>
+        <a href="." class="btn btn-rounded" style="width: 200px; background-color: rgb(150, 120, 0);">Voltar</a>
     </div>
 </div>
