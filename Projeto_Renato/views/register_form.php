@@ -11,7 +11,7 @@ HeaderFooterNav::includeNavbar();
     <div class="container" >
         <hr class="invisible">
         <h1 class="display-6 tw-bold mb-5">Cadastro de Usuário</h1>
-        <?php if ($_GET['success'] == 1){ ?>
+        <?php if ($success == 1){ ?>
             <div class="d-flex justify-content-center">
                 <alert class="alert alert-dismissible alert-success fade show" role="alert" style="width: 350px;">
                     Usuário cadastrado com sucesso.
@@ -70,8 +70,8 @@ HeaderFooterNav::includeNavbar();
     <hr class="vr invisible" style="height: 50;">
     <h6 class="d-flex justify-content-center">Já possui cadastro?</h6>
     <div class="d-flex justify-content-center">
-        <form action="." method="post">
-            <input type="hidden" value="login">
+        <form action="./" method="post">
+            <input type="hidden" name="action" value="login">
             <button class="btn btn-rounded btn-info" style="width: 200px;">Fazer login</button>
         </form>
     </div>

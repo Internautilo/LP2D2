@@ -3,7 +3,10 @@ include('HeaderFooterNav.php');
 
 ini_set('display_errors', 1);
 error_reporting(1);
-session_start();
+
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 HeaderFooterNav::includeHeader();
 HeaderFooterNav::includeNavbar();
@@ -14,18 +17,32 @@ HeaderFooterNav::includeNavbar();
     <div class="container">
         <hr class="invisible">
         <h1 class="display-6 tw-bold mb-5">Login</h1>
+        <?php if ($_GET['success'] == 2) { ?>
+            <div class="container d-flex justify-content-center">
+                <alert class="alert alert-dismissible alert-success fade show" role="alert" style="width: 350px;">
+                    Login feito com sucesso.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </alert>
+            </div>
+        <?php } ?>
         <?php if ($_GET['fail'] == 2) { ?>
             <div class="container d-flex justify-content-center">
-                <div class="alert alert-danger alert-sm" role="alert"> Erro: E-mail ou senha inválidos. </div>
+                <alert class="alert alert-dismissible alert-danger fade show" role="alert" style="width: 350px;">
+                    Erro: Login ou senha incorretos.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </alert>
             </div>
         <?php } ?>
         <?php if ($_GET['fail'] == 3) { ?>
             <div class="d-flex justify-content-center">
-                <div class="alert alert-danger alert-sm" role="alert"> Erro: Email não cadastrado. </div>
+                <alert class="alert alert-dismissible alert-danger fade show" role="alert" style="width: 350px;">
+                    Erro: E-mail não cadastrado.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </alert>
             </div>
         <?php } ?>
         <div class="lg d-flex align-items-center justify-content-center">
-            <form class="form" method="post" action="./loginHandler.php" style="min-width: 50vh;">
+            <form class="form" method="post" action="." style="min-width: 50vh;">
                 <!-- Name input -->
                 <div class="">
                     <label for="email">E-mail</label>
@@ -34,8 +51,8 @@ HeaderFooterNav::includeNavbar();
 
                 <!-- Age input -->
                 <div class="">
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" class="form-control" />
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" class="form-control" />
                 </div>
 
 
@@ -56,6 +73,6 @@ HeaderFooterNav::includeNavbar();
     </div>
     <hr class="vr invisible" style="height: 50;">
     <div class="d-flex justify-content-center" role="button">
-        <a href="." class="btn btn-rounded btn-info" style="width: 200px;">Voltar</a>
+        <a href="./" class="btn btn-rounded btn-info" style="width: 200px;">Voltar</a>
     </div>
 </div>

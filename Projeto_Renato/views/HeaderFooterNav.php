@@ -22,7 +22,7 @@ class HeaderFooterNav
   { ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-danger" >
   <div class="container-fluid">
-    <?php if (isset($_SESSION['isLogedd'])) { ?>
+    <?php if (isset($_SESSION['isLogged'])) { ?>
         <a href="#" class="navbar-brand"> <?= $_SESSION['name'] ?></a>
     <?php } else { ?>
         <a class="navbar-brand" href="#">Navbar</a>

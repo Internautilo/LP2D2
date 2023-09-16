@@ -12,7 +12,6 @@ class User
 
     public static function login($email, $password)
     {
-        session_start();
         global $db;
         $count = 0;
 
@@ -26,17 +25,22 @@ class User
             if ($stmt->rowCount() > 0) {
                 $stmt = $db->prepare("SELECT pwdHash FROM users WHERE email = :email");
                 $stmt->bindParam(':email', $email);
-                $stmt->execute();
+                if ($stmt->execute()) {
+                    $count = $stmt->rowCount();
+                };
+                
 
                 $dbPassword = $stmt->fetchColumn();
 
                 if (password_verify($passwordHash, $dbPassword)) {
-                    session_start();
-                    $stmt = $db->prepare("SELECT id, name FROM users WHERE email = :email");
+                    $stmt = $db->prepare("SELECT id FROM users WHERE email = :email");
                     $stmt->bindParam(':email', $email);
-
-                    if ($stmt->execute()) {
-                        $name = $stmt->fetchColumn();
+                    $stmt->execute();
+                    $id = $stmt->fetchColumn();
+                    $stmt = $db->prepare("SELECT name FROM users WHERE email = :email");
+                    $stmt->bindParam(':email', $email);
+                    $stmt->execute();
+                    $name = $stmt->fetchColumn();
 
                         $_SESSION['id'] = $id;
                         $_SESSION['name'] = $name;
@@ -44,17 +48,14 @@ class User
                         $_SESSION['isLogged'] = true;
 
                         $count = $stmt->fetchColumn();
-                    }
+                    
 
                     return $count;
                 } else {
-                    echo "usuario ou senha inválidos";
-                    //header("Location: login.php?fail=2"); exit;
+                    return 2;
                 }
             } else {
-                echo "email não cadastrado";
-                //header("Location: login.php?fail=3"); exit;
-
+                return 3;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -63,7 +64,6 @@ class User
 
     public static function register($name, $email, $password)
     {
-        session_start();
         global $db;
         $count = 0;
 
