@@ -12,5 +12,4 @@ class ContaBacaria{
         $this->saldo = $saldo;
     }
 
-    function
 }
