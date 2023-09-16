@@ -2,23 +2,20 @@
 
 require('./models/Database.php');
 
-
-
-class User extends Database
+class User
 {
     private $id;
     private $name;
     private $email;
     private $password;
 
-    public $db = Database::conexao();
-
-
 
     public static function login($email, $password)
-    {   
+    {
         session_start();
         global $db;
+        $count = 0;
+
         $passwordHash = $email . $password;
 
         try {
@@ -34,21 +31,22 @@ class User extends Database
                 $dbPassword = $stmt->fetchColumn();
 
                 if (password_verify($passwordHash, $dbPassword)) {
-                    echo "login feito com successo";
-
                     session_start();
-                    $stmt = $db->prepare("SELECT name FROM users WHERE email = :email");
+                    $stmt = $db->prepare("SELECT id, name FROM users WHERE email = :email");
                     $stmt->bindParam(':email', $email);
-                    $stmt->execute();
-                    $name = $stmt->fetchColumn();
 
-                    $_SESSION['name'] = $name;
-                    $_SESSION['email'] = $email;
-                    $_SESSION['isLogged'] = true;
+                    if ($stmt->execute()) {
+                        $name = $stmt->fetchColumn();
 
+                        $_SESSION['id'] = $id;
+                        $_SESSION['name'] = $name;
+                        $_SESSION['email'] = $email;
+                        $_SESSION['isLogged'] = true;
 
-                    header("Location: index.php?success=2");
-                    exit;
+                        $count = $stmt->fetchColumn();
+                    }
+
+                    return $count;
                 } else {
                     echo "usuario ou senha inválidos";
                     //header("Location: login.php?fail=2"); exit;
@@ -61,13 +59,13 @@ class User extends Database
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-
     }
 
     public static function register($name, $email, $password)
     {
         session_start();
         global $db;
+        $count = 0;
 
         $pwdHash = password_hash($email . $password, PASSWORD_BCRYPT);
         try {
@@ -76,9 +74,7 @@ class User extends Database
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                echo "erro: email já cadastrado";
-                header("Location: cadastro.php?fail=1");
-                exit;
+                return "jaCadastrado";
             } else {
                 $stmt = $db->prepare(
                     "INSERT INTO users (name, email, pwdHash) VALUES (:name, :email, :pwdHash);"
@@ -86,11 +82,12 @@ class User extends Database
                 $stmt->bindParam(':name', $name);
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':pwdHash', $pwdHash);
-                $stmt->execute();
+                if ($stmt->execute()) {
+                    $count = $stmt->rowCount();
+                }
+                $stmt->closeCursor();
 
-
-                header("Location: index.php?success=1");
-                exit;
+                return $count;
             }
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -98,7 +95,15 @@ class User extends Database
     }
 
 
-   
+    public static function logout()
+    {
+        session_unset();
+        unset($_SESSION);
+        session_destroy();
+    }
+
+
+
     public function getName()
     {
         return $this->name;
@@ -109,12 +114,12 @@ class User extends Database
         $this->name = $name;
         return $this;
     }
-    
+
     public function getEmail()
     {
         return $this->email;
     }
-    
+
     public function setEmail($email): self
     {
         $this->email = $email;

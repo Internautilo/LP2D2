@@ -27,7 +27,7 @@ class Database
     {
         # Informações sobre o banco de dados:
         $db_host = "127.0.0.1";
-        $db_nome = "exercicio_5";
+        $db_nome = "Projeto_Renato";
         $db_usuario = "root";
         $db_senha = "senha";
         $db_driver = "mysql";

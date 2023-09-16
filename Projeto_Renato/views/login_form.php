@@ -6,7 +6,6 @@ error_reporting(1);
 session_start();
 
 HeaderFooterNav::includeHeader();
-
 HeaderFooterNav::includeNavbar();
 
 ?>
@@ -47,14 +46,16 @@ HeaderFooterNav::includeNavbar();
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-block" style="width: 470px; background-color: rgb(150, 120, 0);">Entrar</button>
+                <button type="submit" class="btn btn-block btn-danger" style="width: 470px;">Entrar</button>
 
+                <!-- Hidden input -->
+                <input type="hidden" name="action" value="logging">
             </form>
 
         </div>
     </div>
     <hr class="vr invisible" style="height: 50;">
     <div class="d-flex justify-content-center" role="button">
-        <a href="." class="btn btn-rounded" style="width: 200px; background-color: rgb(150, 120, 0);">Voltar</a>
+        <a href="." class="btn btn-rounded btn-info" style="width: 200px;">Voltar</a>
     </div>
 </div>

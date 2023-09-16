@@ -3,7 +3,6 @@ include('HeaderFooterNav.php');
 
 
 HeaderFooterNav::includeHeader();
-
 HeaderFooterNav::includeNavbar();
 
 ?>
@@ -12,11 +11,18 @@ HeaderFooterNav::includeNavbar();
     <div class="container" >
         <hr class="invisible">
         <h1 class="display-6 tw-bold mb-5">Cadastro de Usuário</h1>
+        <?php if ($_GET['success'] == 1){ ?>
+            <div class="d-flex justify-content-center">
+                <alert class="alert alert-dismissible alert-success fade show" role="alert" style="width: 350px;">
+                    Usuário cadastrado com sucesso.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </alert>
+            </div>
+            
+        <?php } ?>
         <div class="lg d-flex align-items-center justify-content-center">
+                
             <form class="form" method="post" action="." style="min-width: 50vh;">
-                <!-- Hidden input -->
-                <input type="hidden" name="action" value="register">
-
 
                 <!-- Name input -->
                 <div class="form-input">
@@ -36,9 +42,9 @@ HeaderFooterNav::includeNavbar();
 
                 <!-- Password -->
                 <div class="">
-                    <label for="senha">Senha</label>
+                    <label for="password">Senha</label>
 
-                    <input type="password" id="senha" name="senha" class="form-control" />
+                    <input type="password" id="password" name="password" class="form-control" />
                 </div>
                 <br>
 
@@ -49,15 +55,24 @@ HeaderFooterNav::includeNavbar();
                     </div>
                 </div>
 
+                
+
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-danger btn-block" style="width: 470px;">Cadastrar</button>
 
+                <!-- Hidden input -->
+                <input type="hidden" name="action" value="registration">
+                
             </form>
 
         </div>
     </div>
     <hr class="vr invisible" style="height: 50;">
+    <h6 class="d-flex justify-content-center">Já possui cadastro?</h6>
     <div class="d-flex justify-content-center">
-        <a href="." class="btn btn-info btn-rounded " style="width: 200px;">Voltar</a>
+        <form action="." method="post">
+            <input type="hidden" value="login">
+            <button class="btn btn-rounded btn-info" style="width: 200px;">Fazer login</button>
+        </form>
     </div>
 </div>
