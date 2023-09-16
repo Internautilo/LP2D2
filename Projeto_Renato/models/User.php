@@ -1,5 +1,9 @@
 <?php
 
+require('./models/Database.php');
+
+
+
 class User extends Database
 {
     private $id;
@@ -7,7 +11,7 @@ class User extends Database
     private $email;
     private $password;
 
-    private $db = Database::conexao();
+    public $db = Database::conexao();
 
 
 
@@ -40,7 +44,7 @@ class User extends Database
 
                     $_SESSION['name'] = $name;
                     $_SESSION['email'] = $email;
-                    $_SESSION['isLogged'] = 1;
+                    $_SESSION['isLogged'] = true;
 
 
                     header("Location: index.php?success=2");

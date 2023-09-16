@@ -1,9 +1,6 @@
 <?php
 include('HeaderFooterNav.php');
 
-ini_set('display_errors', 1);
-error_reporting(1);
-session_start();
 
 HeaderFooterNav::includeHeader();
 
@@ -12,24 +9,38 @@ HeaderFooterNav::includeNavbar();
 ?>
 
 <div class="main align-items-center justify-content-center" id="flex-container">
-    <div class="container">
+    <div class="container" >
         <hr class="invisible">
         <h1 class="display-6 tw-bold mb-5">Cadastro de Usuário</h1>
         <div class="lg d-flex align-items-center justify-content-center">
-            <form class="form" method="post" action="./signinHandler.php" style="min-width: 50vh;">
+            <form class="form" method="post" action="." style="min-width: 50vh;">
+                <!-- Hidden input -->
+                <input type="hidden" name="action" value="register">
+
+
                 <!-- Name input -->
+                <div class="form-input">
+                    <label for="name">Nome</label>
+
+                    <input type="text" id="newName" class="form-control" name="name" />
+                </div>
+                <br>
+
+                <!-- Email input -->
                 <div class="">
                     <label for="email">E-mail</label>
 
                     <input type="email" id="email" class="form-control" name="email" />
                 </div>
+                <br>
 
-                <!-- Age input -->
+                <!-- Password -->
                 <div class="">
                     <label for="senha">Senha</label>
 
                     <input type="password" id="senha" name="senha" class="form-control" />
                 </div>
+                <br>
 
 
                 <!-- 2 column grid layout for inline styling -->

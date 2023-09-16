@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  *
  * Classe de conexão ao banco de dados usando PDO no padrão Singleton.
