@@ -133,6 +133,8 @@ HeaderFooterNav::includeNavbar();
         </div>
     </div>
 </div>
+        </div>
+    </main>
 
 
             <!-- /END THE FEATURETTES -->
@@ -142,8 +144,7 @@ HeaderFooterNav::includeNavbar();
 
         <!-- FOOTER -->
         <footer class="container">
-            <p class="float-end"><a href="#">Back to top</a></p>
-            <p>© 2017–2023 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+             <?php HeaderFooterNav::includeFooter(); ?>
         </footer>
     </main>
     <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -151,5 +152,4 @@ HeaderFooterNav::includeNavbar();
 
 
 </body>
-
 </html>
