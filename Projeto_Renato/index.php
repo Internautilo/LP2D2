@@ -9,13 +9,19 @@ var_dump($_POST);
 
 require('./models/User.php');
 require('./models/Client.php');
+require('./models/Database.php');
 
 $db = Database::conexao();
+
+$clients = Client::getClients();
 
 
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $name = filter_input(INPUT_POST, 'name');
+$clientName = filter_input(INPUT_POST, 'clientName');
 $email = filter_input(INPUT_POST, 'email');
+$plan = filter_input(INPUT_POST, 'plan');
+$contact = filter_input(INPUT_POST, 'contact');
 
 $error_message = filter_input(INPUT_GET, 'error');
 $success = filter_input(INPUT_GET, 'success');
@@ -37,6 +43,14 @@ switch ($action) {
 
     case 'login':
         include('./views/login_form.php');
+        break;
+
+    case 'insert_client':
+        include('./views/insert_client.php');
+        break;
+
+    case 'list_clients':
+        include('./views/list_clients.php');
         break;
 
 
@@ -84,6 +98,22 @@ switch ($action) {
         case 'logoff':
             User::logout();
             include('./views/landing_page.php');
+            break;
+
+        case 'client_insertion':
+            if ($clientName && $contact && $plan) {
+                if(Client::addClient($clientName, $contact, $plan)) {
+                    $success = 1;
+                    include('./views/insert_client.php');
+                } else {
+                    $error_message = "Erro ao inserir cliente";
+                    include('./views/error.php');
+                }
+            } else {
+                $error_message = "erro ao inserir cliente";
+                include('./views/error.php');
+            }
+            
             break;
 
 

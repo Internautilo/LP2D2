@@ -1,7 +1,5 @@
 <?php
-require('./models/Database.php');
 
-$db = Database::conexao();
 
 class Client
 {

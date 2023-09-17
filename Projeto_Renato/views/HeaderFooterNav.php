@@ -39,26 +39,27 @@ class HeaderFooterNav
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-
+            <?php if ($_SESSION['email'] == "admin@admin.com") { ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
               <ul class="dropdown-menu">
                 <li class="invisible">.</li>
                 <li>
                 <form action="." method="post">
-                  <input type="hidden" name="action" value="listProducts">
+                  <input type="hidden" name="action" value="list_clients">
                   <button type="submit" class="dropdown-item">Listar produtos</button>
                 </form>
                 </li>
                 <li>
                 <form action="." method="post">
-                  <input type="hidden" name="action" value="insertProduct">
+                  <input type="hidden" name="action" value="insert_client">
                   <button type="submit" class="dropdown-item">Novo produto</button>
                 </form>
                 </li>
              
               </ul>
             </li>
+            <?php } ?>
           </ul>
           <div class="d-lg-flex col-lg-3 justify-content-lg-end">
 

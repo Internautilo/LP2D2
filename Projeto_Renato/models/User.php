@@ -1,6 +1,5 @@
 <?php
 
-include('./models/Database.php');
 
 class User
 {
