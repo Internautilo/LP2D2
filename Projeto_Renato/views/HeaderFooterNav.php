@@ -37,9 +37,11 @@ class HeaderFooterNav
           <?php } ?>
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href=".?action=landing_page">Home</a>
             </li>
-            <?php if ($_SESSION['email'] == "admin@admin.com") { ?>
+            <?php 
+              if(isset($_SESSION)) {
+                if ($_SESSION['email'] == "admin@admin.com") { ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
               <ul class="dropdown-menu">
@@ -59,7 +61,7 @@ class HeaderFooterNav
              
               </ul>
             </li>
-            <?php } ?>
+            <?php } } ?>
           </ul>
           <div class="d-lg-flex col-lg-3 justify-content-lg-end">
 

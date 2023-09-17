@@ -11,7 +11,8 @@ HeaderFooterNav::includeNavbar();
 <html data-bs-theme="dark">
 
 
-</html>
+
+<hr class="invisible" style="height: 100px;" >
 
 <div class="container">
     <div class="container py-5">
@@ -27,3 +28,4 @@ HeaderFooterNav::includeNavbar();
         </div>
     </div>
 </div>
+</html>

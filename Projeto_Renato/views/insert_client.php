@@ -14,6 +14,8 @@ HeaderFooterNav::includeNavbar();
 ?>
 
 <html data-bs-theme="dark">
+<hr class="invisible" style="height: 100px;" >
+
 <div class="main align-items-center justify-content-center" id="flex-container">
     <div class="container" >
         <hr class="invisible">

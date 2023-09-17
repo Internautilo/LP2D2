@@ -1,11 +1,9 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
-var_dump($_SESSION);
-echo "<br>";
-var_dump($_POST);
+
 
 require('./models/User.php');
 require('./models/Client.php');
