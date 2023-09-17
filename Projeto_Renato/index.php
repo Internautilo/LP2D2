@@ -69,9 +69,11 @@ switch ($action) {
 
     default:
         if (isset($_SESSION['isLogged'])) {
-            
+            session_destroy();
         } else {
-            include('./views/register_form.php');
+            include('./views/list_products.php');
+
+           // include('./views/register_form.php');
         }
 
 }
