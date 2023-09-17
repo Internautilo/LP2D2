@@ -47,7 +47,7 @@ class User
                         $_SESSION['email'] = $email;
                         $_SESSION['isLogged'] = true;
 
-                        $count = $stmt->fetchColumn();
+                        $count = $stmt->rowCount();
                     
 
                     return $count;

@@ -23,7 +23,7 @@ class HeaderFooterNav
   { ?>
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger " aria-label="Thirteenth navbar example">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary fixed-top " aria-label="Thirteenth navbar example">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,33 +33,61 @@ class HeaderFooterNav
           <?php if (isset($_SESSION['isLogged'])) { ?>
             <a href="#" class="navbar-brand col-lg-3 me-0"> <?= $_SESSION['name'] ?></a>
           <?php } else { ?>
-            <a class="navbar-brand col-lg-3 me-0" href="#">Navbar</a>
+            <a class="navbar-brand col-lg-3 me-0" href="#">Empresa LTDA.</a>
           <?php } ?>
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li class="invisible">.</li>
+                <li>
+                <form action="." method="post">
+                  <input type="hidden" name="action" value="listProducts">
+                  <button type="submit" class="dropdown-item">Listar produtos</button>
+                </form>
+                </li>
+                <li>
+                <form action="." method="post">
+                  <input type="hidden" name="action" value="insertProduct">
+                  <button type="submit" class="dropdown-item">Novo produto</button>
+                </form>
+                </li>
+             
               </ul>
             </li>
           </ul>
           <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-            
+
             <?php if (isset($_SESSION['isLogged'])) { ?>
-            
-            
+              <form action="." method="post">
+                <input type="hidden" name="action" value="logoff">
+                <button type="submit" class="btn btn-danger btn-rounded">Logoff</button>
+              </form>
             <?php } else { ?>
-              <a class="btn btn-warning btn-rounded" href="./">Register</a>
-              <li class="invisible"></li>
-              <a class="btn btn-success btn-rounded" href="">Log-in</a>
+              <ul class="list-group list-group-horizontal list-unstyled">
+                <li>
+                  <form action="." method="post">
+                    <input type="hidden" name="action" value="register">
+                    <button type="submit" class="btn btn-primary btn-rounded">Registrar</button>
+                  </form>
+                </li>
+                <li class="invisible"><br>--</li>
+                <li>
+                  <form action="." method="post">
+                    <input type="hidden" name="action" value="login">
+                    <button type="submit" class="btn btn-success btn-rounded">Log-in</button>
+                  </form>
+                </li>
+              </ul>
+
+
             <?php } ?>
-              
-              
+
+
           </div>
           <div class="d-lg-flex col-lg-3 justify-content-lg-end">
           </div>
@@ -68,24 +96,24 @@ class HeaderFooterNav
     </nav>
 
 
-<?php
+
+
+  <?php
 
   }
 
   public static function includeFooter()
   { ?>
-<div class="container">
-  <footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-    </ul>
-    <p class="text-center text-body-secondary">© 2023 Company, Inc</p>
-  </footer>
-</div>
-  <?php 
+    <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Inicio</a></li>
+          <li class="nav-item"><a href="#packages" class="nav-link px-2 text-body-secondary">Preços</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link px-2 text-body-secondary">Sobre</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2023 Company, Inc</p>
+      </footer>
+    </div>
+<?php
   }
 }

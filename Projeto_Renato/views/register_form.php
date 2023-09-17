@@ -7,6 +7,7 @@ HeaderFooterNav::includeNavbar();
 
 ?>
 
+<html data-bs-theme="dark">
 <div class="main align-items-center justify-content-center" id="flex-container">
     <div class="container" >
         <hr class="invisible">
@@ -76,3 +77,4 @@ HeaderFooterNav::includeNavbar();
         </form>
     </div>
 </div>
+</html>

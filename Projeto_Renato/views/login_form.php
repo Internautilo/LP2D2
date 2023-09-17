@@ -13,11 +13,12 @@ HeaderFooterNav::includeNavbar();
 
 ?>
 
+<html data-bs-theme="dark">
 <div class="main align-items-center justify-content-center" id="flex-container">
     <div class="container">
         <hr class="invisible">
         <h1 class="display-6 tw-bold mb-5">Login</h1>
-        <?php if ($_GET['success'] == 2) { ?>
+        <?php if ($success == 2) { ?>
             <div class="container d-flex justify-content-center">
                 <alert class="alert alert-dismissible alert-success fade show" role="alert" style="width: 350px;">
                     Login feito com sucesso.
@@ -25,7 +26,7 @@ HeaderFooterNav::includeNavbar();
                 </alert>
             </div>
         <?php } ?>
-        <?php if ($_GET['fail'] == 2) { ?>
+        <?php if ($fail == 2) { ?>
             <div class="container d-flex justify-content-center">
                 <alert class="alert alert-dismissible alert-danger fade show" role="alert" style="width: 350px;">
                     Erro: Login ou senha incorretos.
@@ -33,7 +34,7 @@ HeaderFooterNav::includeNavbar();
                 </alert>
             </div>
         <?php } ?>
-        <?php if ($_GET['fail'] == 3) { ?>
+        <?php if ($fail == 3) { ?>
             <div class="d-flex justify-content-center">
                 <alert class="alert alert-dismissible alert-danger fade show" role="alert" style="width: 350px;">
                     Erro: E-mail não cadastrado.
@@ -76,3 +77,4 @@ HeaderFooterNav::includeNavbar();
         <a href="./" class="btn btn-rounded btn-info" style="width: 200px;">Voltar</a>
     </div>
 </div>
+</html>

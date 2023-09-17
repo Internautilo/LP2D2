@@ -28,52 +28,66 @@ if (!$action) {
 }
 
 switch ($action) {
+
+    // VIEWS
+    case 'register':
+        include('./views/register_form.php');
+        break;
+
+    case 'login':
+        include('./views/login_form.php');
+        break;
+
+
+
+    
+    
+    
+    // LOGIC
     case 'registration':
         if ($name && $email && $password) {
             if (User::register($name, $email, $password)){
-                include('./views/register_form.php?success=1');
+                $success = 1;
+                include '../Projeto_Renato/views/register_form.php';
             }
         } else {
-            include('/views/error.php?error=registration_error');
+            $error_message = 'registrarion_error';
+            include('/views/error.php');
         }
-        break;
-    
-    case 'login':
-        include('./views/login_form.php');
         break;
     
     case 'logging':
         echo "okey<br>";
         if ($email && $password){
-            echo "okey<br>";
 
             $status = User::login($email, $password);
             if ($status == 1) {
-                include('./views/login_form.php?success=2');
+                $success = 2;
+                include('./views/login_form.php');
             } 
             if ($status == 2){
-                include('./views/login_form.php?fail=2');
-                echo "okey <br>";
-
+                $fail = 2;
+                include('./views/login_form.php');
             }
             if ($status == 3){
-                include('./views/login_form.php?fail=3');
-
+                $fail = 3;
+                include('./views/login_form.php');
             }
             if ($status == 0){
-                include('./views/login_form.php?fail=4');
+                $fail = 4;
+                include('./views/login_form.php');
             }
         }
         break;
 
+        case 'logoff':
+            User::logout();
+            include('./views/landing_page.php');
+            break;
 
+
+
+    // DEFAULT VIEW
     default:
-        if (isset($_SESSION['isLogged'])) {
-            session_destroy();
-        } else {
-            include('./views/list_products.php');
-
-           // include('./views/register_form.php');
-        }
-
+        include('./views/landing_page.php');
 }
