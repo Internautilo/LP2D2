@@ -1,6 +1,6 @@
 <?php
 
-require('./models/Database.php');
+include('./models/Database.php');
 
 class User
 {

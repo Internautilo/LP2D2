@@ -8,3 +8,10 @@ create table users (
     email varchar(255),
     pwdHash varchar(255)
 );
+
+create table clients (
+    id int auto_increment primary key,
+    name varchar(255),
+    contact varchar(255),
+    plan enum('free', 'pro', 'enterprise')
+);

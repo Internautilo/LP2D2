@@ -8,6 +8,7 @@ echo "<br>";
 var_dump($_POST);
 
 require('./models/User.php');
+require('./models/Client.php');
 
 $db = Database::conexao();
 
