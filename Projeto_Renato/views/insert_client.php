@@ -31,7 +31,7 @@ HeaderFooterNav::includeNavbar();
         <?php } ?>
         <div class="lg d-flex align-items-center justify-content-center">
                 
-            <form class="form" method="post" action="." style="min-width: 50vh;">
+            <form class="form" method="post" action="." style="max-width: 50vh;">
 
                 <!-- Name input -->
                 <div class="form-input">

@@ -19,7 +19,7 @@ HeaderFooterNav::includeNavbar();
     <main>
 
         <header class="bg-dark py-5">
-            <div class="container px-5">
+            <div class="container px-5 mt-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-6">
                         <div class="text-center my-5">
@@ -153,7 +153,10 @@ HeaderFooterNav::includeNavbar();
                                 <li>Sem acesso à central de help desk</li>
 
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Inscreva-se gratuitamente</button>
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="action" value="register">
+                                <button type="submit" class="w-100 btn btn-lg btn-outline-primary">Inscreva-se gratuitamente</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -171,7 +174,10 @@ HeaderFooterNav::includeNavbar();
                                 <li>Prioridade no suporte via email</li>
                                 <li>Acesso à central de help desk</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary">Contrate agora</button>
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="action" value="register">
+                                <button type="submit" class="w-100 btn btn-lg btn-primary">Contrate agora</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -188,7 +194,10 @@ HeaderFooterNav::includeNavbar();
                                 <li>Suporte prioritário via telefone ou email</li>
                                 <li>Acesso à central de help desk</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary">Contate-nos</button>
+                            <form action="index.php" method="post">
+                                <input type="hidden" name="action" value="register">
+                                <button type="submit" class="w-100 btn btn-lg btn-primary">Contate-nos</button>
+                            </form>
                         </div>
                     </div>
                 </div>

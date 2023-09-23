@@ -3,10 +3,8 @@
 
 class User
 {
-    private $id;
     private $name;
     private $email;
-    private $password;
 
 
     public static function login($email, $password)
@@ -32,18 +30,30 @@ class User
                 $dbPassword = $stmt->fetchColumn();
 
                 if (password_verify($passwordHash, $dbPassword)) {
+
+                    //fetch id
                     $stmt = $db->prepare("SELECT id FROM users WHERE email = :email");
                     $stmt->bindParam(':email', $email);
                     $stmt->execute();
                     $id = $stmt->fetchColumn();
+
+                    //fetch name
                     $stmt = $db->prepare("SELECT name FROM users WHERE email = :email");
                     $stmt->bindParam(':email', $email);
                     $stmt->execute();
                     $name = $stmt->fetchColumn();
 
-                        $_SESSION['id'] = $id;
+                    //fetch plan
+                    $stmt = $db->prepare("SELECT plan FROM clients WHERE email = :email");
+                    $stmt->bindParam(':email', $email);
+                    $stmt->execute();
+                    $plan = $stmt->fetchColumn();
+
+                        //set session variables
+                        $_SESSION['id'] = (int) $id;
                         $_SESSION['name'] = $name;
                         $_SESSION['email'] = $email;
+                        $_SESSION['plan'] = $plan;
                         $_SESSION['isLogged'] = true;
 
                         $count = $stmt->rowCount();

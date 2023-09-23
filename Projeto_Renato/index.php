@@ -1,7 +1,7 @@
 <?php
 session_start();
-//ini_set('display_errors', 1);
-//error_reporting(E_ALL);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 
 
@@ -9,24 +9,27 @@ require('./models/User.php');
 require('./models/Client.php');
 require('./models/Database.php');
 
+var_dump($_SESSION);
+
 $db = Database::conexao();
 
 $clients = Client::getClients();
 
-
+//Filter for POST fillable inputs
 $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 $name = filter_input(INPUT_POST, 'name');
 $clientName = filter_input(INPUT_POST, 'clientName');
 $email = filter_input(INPUT_POST, 'email');
 $plan = filter_input(INPUT_POST, 'plan');
 $contact = filter_input(INPUT_POST, 'contact');
+$password = filter_input(INPUT_POST, 'password');
 
+//Filter for POST/GET status messages
 $error_message = filter_input(INPUT_GET, 'error');
 $success = filter_input(INPUT_GET, 'success');
 $fail = filter_input(INPUT_GET, 'fail');
 
-$password = filter_input(INPUT_POST, 'password');
-
+//Filter for POST/GET action status
 $action = filter_input(INPUT_POST, 'action');
 if (!$action) {
     $action = filter_input(INPUT_GET, 'action');
@@ -51,7 +54,11 @@ switch ($action) {
         include('./views/list_clients.php');
         break;
 
+    case 'list_plans':
+        include('./views/list_plans.php');
+        break;
 
+    
 
     
     
@@ -76,7 +83,7 @@ switch ($action) {
             $status = User::login($email, $password);
             if ($status == 1) {
                 $success = 2;
-                include('./views/login_form.php');
+                include('./views/landing_page.php');
             } 
             if ($status == 2){
                 $fail = 2;
@@ -111,7 +118,6 @@ switch ($action) {
                 $error_message = "erro ao inserir cliente";
                 include('./views/error.php');
             }
-            
             break;
 
 
@@ -120,3 +126,5 @@ switch ($action) {
     default:
         include('./views/landing_page.php');
 }
+
+

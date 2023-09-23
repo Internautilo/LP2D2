@@ -17,9 +17,11 @@ HeaderFooterNav::includeNavbar();
 <hr class="invisible" style="height: 100px;" >
 
 <div class="main align-items-center justify-content-center" id="flex-container">
-    <div class="container">
+    <div class="container-fluid">
         <hr class="invisible">
-        <h1 class="display-6 tw-bold mb-5">Login</h1>
+        <div class="container">
+            <h1 class="display-6 tw-bold mb-5">Login</h1>
+        </div>
         <?php if ($success == 2) { ?>
             <div class="container d-flex justify-content-center">
                 <alert class="alert alert-dismissible alert-success fade show" role="alert" style="width: 350px;">
@@ -44,19 +46,18 @@ HeaderFooterNav::includeNavbar();
                 </alert>
             </div>
         <?php } ?>
-        <div class="lg d-flex align-items-center justify-content-center">
-            <form class="form" method="post" action="." style="min-width: 50vh;">
+        <div class="container-fluid d-flex align-items-center justify-content-center">
+            <form class="form" method="post" action=".">
                 <!-- Name input -->
-                <div class="">
+                
                     <label for="email">E-mail</label>
                     <input type="email" id="email" class="form-control" name="email" />
-                </div>
 
                 <!-- Age input -->
-                <div class="">
+                
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password" class="form-control" />
-                </div>
+                
 
 
                 <!-- 2 column grid layout for inline styling -->
