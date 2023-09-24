@@ -54,9 +54,11 @@ HeaderFooterNav::includeNavbar();
                                         <form action="." method="post">
                                             <div class="modal-body">
                                                 <?php if ($_SESSION['plan'] == false) { ?>Deseja contratar o plano Gratuito ?<?php } else { ?> Deseja atualizar seu plano para o <i>Plano Gratuito</i> ? <?php } ?>
-                                            <br><br>
-                                            <label class="label" for="contact">Digite um meio de contato</label>
-                                            <input type="text" name="contact" id="contact" class="form-control">
+                                            <?php if ($_SESSION['plan'] == false) { ?>
+                                                <BR></BR>
+                                                <label class="label" for="contact">Digite um meio de contato</label>
+                                                <input type="text" name="contact" id="contact" class="form-control">
+                                            <?php } ?>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
@@ -102,15 +104,17 @@ HeaderFooterNav::includeNavbar();
                                         <form action="." method="post">
                                             <div class="modal-body">
                                                 <?php if ($_SESSION['plan'] == false) { ?>Deseja contratar o plano Profissional ?<?php } else { ?> Deseja atualizar seu plano para o <i>Plano Profissional</i> ? <?php } ?>
-                                            <BR></BR>
-                                            <label class="label" for="contact">Digite um meio de contato</label>
-                                            <input type="text" name="contact" id="contact" class="form-control">
-                                            </div>      
+                                            <?php if ($_SESSION['plan'] == false) { ?>
+                                                <BR></BR>
+                                                <label class="label" for="contact">Digite um meio de contato</label>
+                                                <input type="text" name="contact" id="contact" class="form-control">
+                                            <?php } ?>
+                                            </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                                                 <input type="hidden" name="action" value="<?php if ($_SESSION['plan'] == false) { ?>contract_plan<?php } else { ?>update_plan<?php } ?>">
                                                 <input type="hidden" name="plan" value="pro">
-                                                <button type="submit" name="plan" value="pro" class="btn btn-primary"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Atualização de Plano <?php } ?></button>
+                                                <button type="submit" name="plan" value="pro" class="btn btn-primary"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Confirmar Atualização <?php } ?></button>
                                             </div>
                                         </form>
                                     </div>
@@ -148,15 +152,17 @@ HeaderFooterNav::includeNavbar();
                                         <form action="." method="post">
                                             <div class="modal-body">
                                                 <?php if ($_SESSION['plan'] == false) { ?>Deseja contratar o plano Empresarial ?<?php } else { ?> Deseja atualizar seu plano para o <i>Plano Empresarial</i> ? <?php } ?>
-                                                <br><br>
+                                            <?php if ($_SESSION['plan'] == false) { ?>
+                                                <BR></BR>
                                                 <label class="label" for="contact">Digite um meio de contato</label>
-                                            <input type="text" name="contact" id="contact" class="form-control">
+                                                <input type="text" name="contact" id="contact" class="form-control">
+                                            <?php } ?>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                                                 <input type="hidden" name="action" value="<?php if ($_SESSION['plan'] == false) { ?>contract_plan<?php } else { ?>update_plan<?php } ?>">
                                                 <input type="hidden" name="plan" value="enterprise">
-                                                <button type="submit" name="plan" value="enterprise" class="btn btn-primary"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Atualização de Plano <?php } ?></button>
+                                                <button type="submit" name="plan" value="enterprise" class="btn btn-primary"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Confirmar Atualização <?php } ?></button>
                                             </div>
                                         </form>
                                     </div>

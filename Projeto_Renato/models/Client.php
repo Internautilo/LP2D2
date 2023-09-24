@@ -78,7 +78,7 @@ class Client
         try {
 
             $stmt = $db->prepare(
-                "UPDATE clients plan = :plan WHERE user_id = :user_id;"
+                "UPDATE clients SET plan = :plan WHERE user_id = :user_id;"
             );
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':plan', $plan);

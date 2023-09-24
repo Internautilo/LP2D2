@@ -11,7 +11,7 @@ create table users (
 
 create table clients (
     client_id int auto_increment primary key,
-    user_id int,
+    user_id int UNIQUE,
     name varchar(255),
     email varchar(255),
     contact varchar(255),
