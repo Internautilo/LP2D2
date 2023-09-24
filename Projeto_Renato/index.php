@@ -23,6 +23,8 @@ $email = filter_input(INPUT_POST, 'email');
 $plan = filter_input(INPUT_POST, 'plan');
 $contact = filter_input(INPUT_POST, 'contact');
 $password = filter_input(INPUT_POST, 'password');
+$plan = filter_input(INPUT_POST, 'plan');
+$contact = filter_input(INPUT_POST, 'contact');
 
 //Filter for POST/GET status messages
 $error_message = filter_input(INPUT_GET, 'error');
@@ -120,6 +122,23 @@ switch ($action) {
             }
             break;
 
+        case 'contract_plan':
+            if (Client::contractPlan($plan, $_SESSION['id'], $_SESSION['name'], $_SESSION['email'], $contact)){
+                include('./views/landing_page.php');
+            } else {
+                $error_message = "Erro na contratação de plano";
+                include('./views/error.php');
+            }
+            break;
+
+        case 'update_plan':
+            if(Client::updatePlan($plan, $_SESSION['id'])){
+                include('./views/landing_page.php');
+            } else {
+                $error_message = "Erro na atualização de plano";
+                include('./views/error.php');
+            }
+            break;
 
 
     // DEFAULT VIEW

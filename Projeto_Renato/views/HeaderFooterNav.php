@@ -68,7 +68,7 @@ class HeaderFooterNav
 
                 </ul>
               </li>
-            <?php } else if ($_SESSION['plan'] != NULL) { ?>
+            <?php } else if ($_SESSION['plan'] != false) { ?>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Meu plano</a>
@@ -76,13 +76,13 @@ class HeaderFooterNav
                   <li class="invisible">.</li>
                   <li>
                     <form action="." method="post">
-                      <input type="hidden" name="action" value="list_clients">
+                      <input type="hidden" name="action" value="my_plan">
                       <button type="submit" class="dropdown-item">Informações sobre meu plano</button>
                     </form>
                   </li>
                   <li>
                     <form action="." method="post">
-                      <input type="hidden" name="action" value="insert_client">
+                      <input type="hidden" name="action" value="list_plans">
                       <button type="submit" class="dropdown-item">Mudar de plano</button>
                     </form>
                   </li>
@@ -96,7 +96,7 @@ class HeaderFooterNav
                   <li>
                     <form action="." method="post">
                       <input type="hidden" name="action" value="list_plans">
-                      <button type="submit" class="dropdown-item">Aderir à um plano</button>
+                      <button type="submit" class="dropdown-item"><b>Aderir à um plano</b></button>
                     </form>
                   </li>
                 </ul>

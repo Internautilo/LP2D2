@@ -38,24 +38,36 @@ HeaderFooterNav::includeNavbar();
 
                             </ul>
 
-                            <?php if (isset($_SESSION)) { ?>
-                                <?php if (isset($_SESSION['plan'])) { ?>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="update_plan">
-                                        <button type="submit" class="w-100 btn btn-lg btn-outline-primary">Atualize seu plano</button>
-                                    </form>
-                                <?php } else { ?>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="contract_plan">
-                                        <button type="submit" class="w-100 btn btn-lg btn-outline-primary">Inscreva-se gratuitamente</button>
-                                    </form>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="register">
-                                    <button type="submit" class="w-100 btn btn-lg btn-outline-primary">Inscreva-se gratuitamente</button>
-                                </form>
-                            <?php } ?>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <?php if ($_SESSION['plan'] == false) { ?> Inscreva-se gratuitamente <?php } else { ?> Atualizar Plano <?php } ?>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Atualização de Plano <?php } ?></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form action="." method="post">
+                                            <div class="modal-body">
+                                                <?php if ($_SESSION['plan'] == false) { ?>Deseja contratar o plano Gratuito ?<?php } else { ?> Deseja atualizar seu plano para o <i>Plano Gratuito</i> ? <?php } ?>
+                                            <br><br>
+                                            <label class="label" for="contact">Digite um meio de contato</label>
+                                            <input type="text" name="contact" id="contact" class="form-control">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                                <input type="hidden" name="action" value="<?php if ($_SESSION['plan'] == false) { ?>contract_plan<?php } else { ?>update_plan<?php } ?>">
+                                                <input type="hidden" name="plan" value="free">
+                                                <button type="submit" class="btn btn-primary"><?php if ($_SESSION['plan'] == false) { ?>Confirmar contratação<?php } else { ?> Confirmar atualização <?php } ?></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,24 +86,36 @@ HeaderFooterNav::includeNavbar();
                                 <li>Acesso à central de help desk</li>
                             </ul>
 
-                            <?php if (isset($_SESSION)) { ?>
-                                <?php if (isset($_SESSION['plan'])) { ?>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="update_plan">
-                                        <button type="submit" class="w-100 btn btn-lg btn-primary">Atualize seu plano</button>
-                                    </form>
-                                <?php } else { ?>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="contract_plan">
-                                        <button type="submit" class="w-100 btn btn-lg btn-primary">Contrate agora</button>
-                                    </form>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="register">
-                                    <button type="submit" class="w-100 btn btn-lg btn-primary">Contrate agora</button>
-                                </form>
-                            <?php } ?>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                                <?php if ($_SESSION['plan'] == false) { ?>Contrate agora <?php } else { ?> Atualizar Plano <?php } ?>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Atualização de Plano <?php } ?></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form action="." method="post">
+                                            <div class="modal-body">
+                                                <?php if ($_SESSION['plan'] == false) { ?>Deseja contratar o plano Profissional ?<?php } else { ?> Deseja atualizar seu plano para o <i>Plano Profissional</i> ? <?php } ?>
+                                            <BR></BR>
+                                            <label class="label" for="contact">Digite um meio de contato</label>
+                                            <input type="text" name="contact" id="contact" class="form-control">
+                                            </div>      
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                                <input type="hidden" name="action" value="<?php if ($_SESSION['plan'] == false) { ?>contract_plan<?php } else { ?>update_plan<?php } ?>">
+                                                <input type="hidden" name="plan" value="pro">
+                                                <button type="submit" name="plan" value="pro" class="btn btn-primary"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Atualização de Plano <?php } ?></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,24 +132,36 @@ HeaderFooterNav::includeNavbar();
                                 <li>Suporte prioritário via telefone ou email</li>
                                 <li>Acesso à central de help desk</li>
                             </ul>
-                            <?php if (isset($_SESSION)) { ?>
-                                <?php if (isset($_SESSION['plan'])) { ?>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="update_plan">
-                                        <button type="submit" class="w-100 btn btn-lg btn-primary">Atualize seu Plano</button>
-                                    </form>
-                                <?php } else { ?>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="contract_plan">
-                                        <button type="submit" class="w-100 btn btn-lg btn-primary">Contrate Agora</button>
-                                    </form>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="register">
-                                    <button type="submit" class="w-100 btn btn-lg btn-primary">Contrate agora</button>
-                                </form>
-                            <?php } ?>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                                <?php if ($_SESSION['plan'] == false) { ?>Contrate agora <?php } else { ?> Atualizar Plano <?php } ?>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Atualização de Plano <?php } ?></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form action="." method="post">
+                                            <div class="modal-body">
+                                                <?php if ($_SESSION['plan'] == false) { ?>Deseja contratar o plano Empresarial ?<?php } else { ?> Deseja atualizar seu plano para o <i>Plano Empresarial</i> ? <?php } ?>
+                                                <br><br>
+                                                <label class="label" for="contact">Digite um meio de contato</label>
+                                            <input type="text" name="contact" id="contact" class="form-control">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                                <input type="hidden" name="action" value="<?php if ($_SESSION['plan'] == false) { ?>contract_plan<?php } else { ?>update_plan<?php } ?>">
+                                                <input type="hidden" name="plan" value="enterprise">
+                                                <button type="submit" name="plan" value="enterprise" class="btn btn-primary"><?php if ($_SESSION['plan'] == false) { ?>Contratar plano <?php } else { ?> Atualização de Plano <?php } ?></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

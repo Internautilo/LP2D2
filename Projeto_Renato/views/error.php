@@ -20,7 +20,7 @@ HeaderFooterNav::includeNavbar();
             <h1>Error:</h1>
         </div>
         <div class="container d-flex justify-content-center">
-        <h6><?= $error_message ?>Error</h6>
+        <h6><?= $error_message ?></h6>
         </div>
         <hr class="invisible" style="height: 100px;" >
         <div class="container d-flex justify-content-center">

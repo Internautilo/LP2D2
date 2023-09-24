@@ -44,8 +44,8 @@ class User
                     $name = $stmt->fetchColumn();
 
                     //fetch plan
-                    $stmt = $db->prepare("SELECT plan FROM clients WHERE email = :email");
-                    $stmt->bindParam(':email', $email);
+                    $stmt = $db->prepare("SELECT plan FROM clients WHERE user_id = :user_id");
+                    $stmt->bindParam(':user_id', $id);
                     $stmt->execute();
                     $plan = $stmt->fetchColumn();
 

@@ -10,10 +10,11 @@ create table users (
 );
 
 create table clients (
-    id int auto_increment,
+    client_id int auto_increment primary key,
+    user_id int,
     name varchar(255),
     email varchar(255),
     contact varchar(255),
     plan enum('free', 'pro', 'enterprise'),
-    foreign key (id) references users(id)
+    foreign key (user_id) references users(id)
 );
