@@ -59,13 +59,6 @@ class HeaderFooterNav
                       <button type="submit" class="dropdown-item">Listar clientes</button>
                     </form>
                   </li>
-                  <li>
-                    <form action="." method="post">
-                      <input type="hidden" name="action" value="insert_client">
-                      <button type="submit" class="dropdown-item">Novo cliente</button>
-                    </form>
-                  </li>
-
                 </ul>
               </li>
             <?php } else if ($_SESSION['plan'] != false) { ?>

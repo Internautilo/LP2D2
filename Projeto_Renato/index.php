@@ -48,10 +48,6 @@ switch ($action) {
         include('./views/login_form.php');
         break;
 
-    case 'insert_client':
-        include('./views/insert_client.php');
-        break;
-
     case 'list_clients':
         include('./views/list_clients.php');
         break;
@@ -67,6 +63,8 @@ switch ($action) {
 
 
         // LOGIC
+
+    //LOGIN/REGISTRATION LOGIC
     case 'registration':
         if ($name && $email && $password) {
             if (User::register($name, $email, $password)) {
@@ -107,6 +105,9 @@ switch ($action) {
         User::logout();
         include('./views/landing_page.php');
         break;
+    
+    //END LOGIN/REGISTRATION LOGIC
+
 
     case 'client_insertion':
         if ($clientName && $contact && $plan) {
@@ -150,7 +151,7 @@ switch ($action) {
             include('./views/error.php');
         }
         break;
-
+    //END PLAN LOGIC
 
         // DEFAULT VIEW
     default:
