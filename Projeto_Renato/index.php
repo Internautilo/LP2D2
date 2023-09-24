@@ -39,7 +39,7 @@ if (!$action) {
 
 switch ($action) {
 
-    // VIEWS
+        // VIEWS
     case 'register':
         include('./views/register_form.php');
         break;
@@ -60,15 +60,16 @@ switch ($action) {
         include('./views/list_plans.php');
         break;
 
-    
+    case 'my_plan':
+        include('./views/my_plan.php');
+        break;
 
-    
-    
-    
-    // LOGIC
+
+
+        // LOGIC
     case 'registration':
         if ($name && $email && $password) {
-            if (User::register($name, $email, $password)){
+            if (User::register($name, $email, $password)) {
                 $success = 1;
                 include '../Projeto_Renato/views/register_form.php';
             }
@@ -77,73 +78,81 @@ switch ($action) {
             include('/views/error.php');
         }
         break;
-    
+
     case 'logging':
         echo "okey<br>";
-        if ($email && $password){
+        if ($email && $password) {
 
             $status = User::login($email, $password);
             if ($status == 1) {
                 $success = 2;
                 include('./views/landing_page.php');
-            } 
-            if ($status == 2){
+            }
+            if ($status == 2) {
                 $fail = 2;
                 include('./views/login_form.php');
             }
-            if ($status == 3){
+            if ($status == 3) {
                 $fail = 3;
                 include('./views/login_form.php');
             }
-            if ($status == 0){
+            if ($status == 0) {
                 $fail = 4;
                 include('./views/login_form.php');
             }
         }
         break;
 
-        case 'logoff':
-            User::logout();
+    case 'logoff':
+        User::logout();
+        include('./views/landing_page.php');
+        break;
+
+    case 'client_insertion':
+        if ($clientName && $contact && $plan) {
+            if (Client::addClient($clientName, $contact, $plan)) {
+                $success = 1;
+                include('./views/insert_client.php');
+            } else {
+                $error_message = "Erro ao inserir cliente";
+                include('./views/error.php');
+            }
+        } else {
+            $error_message = "erro ao inserir cliente";
+            include('./views/error.php');
+        }
+        break;
+
+    //PLAN LOGIC 
+    case 'contract_plan':
+        if (Client::contractPlan($plan, $_SESSION['id'], $_SESSION['name'], $_SESSION['email'], $contact)) {
             include('./views/landing_page.php');
-            break;
+        } else {
+            $error_message = "Erro na contratação de plano";
+            include('./views/error.php');
+        }
+        break;
 
-        case 'client_insertion':
-            if ($clientName && $contact && $plan) {
-                if(Client::addClient($clientName, $contact, $plan)) {
-                    $success = 1;
-                    include('./views/insert_client.php');
-                } else {
-                    $error_message = "Erro ao inserir cliente";
-                    include('./views/error.php');
-                }
-            } else {
-                $error_message = "erro ao inserir cliente";
-                include('./views/error.php');
-            }
-            break;
-
-        case 'contract_plan':
-            if (Client::contractPlan($plan, $_SESSION['id'], $_SESSION['name'], $_SESSION['email'], $contact)){
-                include('./views/landing_page.php');
-            } else {
-                $error_message = "Erro na contratação de plano";
-                include('./views/error.php');
-            }
-            break;
-
-        case 'update_plan':
-            if(Client::updatePlan($plan, $_SESSION['id'])){
-                include('./views/landing_page.php');
-            } else {
-                $error_message = "Erro na atualização de plano";
-                include('./views/error.php');
-            }
-            break;
+    case 'update_plan':
+        if (Client::updatePlan($plan, $_SESSION['id'])) {
+            include('./views/landing_page.php');
+        } else {
+            $error_message = "Erro na atualização de plano";
+            include('./views/error.php');
+        }
+        break;
+    
+    case 'cancel_plan':
+        if (Client::cancelPlan($_SESSION['id'])){
+            include('./views/landing_page.php');
+        } else {
+            $error_message = "Erro ao cancelar plano";
+            include('./views/error.php');
+        }
+        break;
 
 
-    // DEFAULT VIEW
+        // DEFAULT VIEW
     default:
         include('./views/landing_page.php');
 }
-
-

@@ -95,6 +95,30 @@ class Client
         }
     }
 
+    public static function cancelPlan($user_id)
+    {
+        global $db;
+        $count = 0;
+
+        try{
+            
+            $stmt = $db->prepare(
+                "DELETE FROM clients WHERE user_id = :user_id; "
+            );
+            $stmt->bindParam(':user_id', $user_id);
+            if($stmt->execute()){
+                $count = $stmt->rowCount();
+            }
+            $stmt->closeCursor();
+
+            $_SESSION['plan'] = false;
+            
+            return $count;
+        } catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
 
     public static function getClients()
     {
