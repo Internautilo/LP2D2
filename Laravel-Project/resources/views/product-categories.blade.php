@@ -1,18 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Lojinha - Landing Page')
-
 @section('content')
-
-{{-- Main Logo --}}
-<div class="container-fluid d-flex justify-content-center h-75 bg-primary-subtle py-5 my-5">
-    <img src="{{ asset('img/Lojinha_logo.png') }}" class="d-inline-block h100">
-</div>
-<hr class="hr invisible">
-
-
-{{-- Products --}}
-<div class="container rounded-5 text-center pb-3 px-3 mb-5 text-primary-emphasis bg-light-subtle border border-3">
+<div class="container rounded-5 text-center pb-3 px-3 my-5 text-primary-emphasis bg-light-subtle border border-3">
     <h1 class="container-fluid pt-5 pb-3 my-5 display-4 text-center">Produtos</h1>
     <div class="container text-center mx-auto px-auto my-5 py-5 ">
         <div class="row  align-items-center justify-content-evenly">
@@ -43,8 +32,7 @@
             <div class="col-sm-3 card pt-2 bg-info-subtle">
                 <div class="card-header bg-light-subtle">Pratos</div>
 
-                <img src="{{ asset('img/cat-prato.jpg') }}"
-                    class="img-card-top">
+                <img src="{{ asset('img/cat-prato.jpg') }}" class="img-card-top">
                 <div class="card-body">
                     <h5 class="card-title">Prato plástico descartável</h5>
                     <p class="card-text">Pratos descartáveis em poliestireno (PS) combinam praticidade e resistência.
@@ -57,5 +45,4 @@
         </div>
     </div>
 </div>
-
 @endsection

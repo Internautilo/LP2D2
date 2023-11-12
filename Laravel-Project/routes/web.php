@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('landing-page');
 })->name('home');
 
-Route::get('/teste', function(){
-    return view('teste');
-})->name('batatinha');
+Route::get('/categorias', function() {
+    return view('product-categories');
+})->name('categories');
 
