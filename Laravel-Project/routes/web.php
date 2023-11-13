@@ -18,11 +18,18 @@ Route::get('/', function () {
     return view('landing-page');
 })->name('home');
 
+
+// PRODUCT VIEWS
 Route::get('/categorias', function() {
-    return view('product-categories');
+    return view('product.product-categories');
 })->name('categories');
 
 Route::get('/listar_produtos', function(){
     return view('product.list_products');
 } )->name('list_products');
+
+Route::get('/inserir_produto', function () {
+    return view('produtct.insert_product');
+})->name('product_insertion_form');
+
 

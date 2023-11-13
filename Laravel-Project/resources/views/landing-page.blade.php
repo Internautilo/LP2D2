@@ -12,12 +12,12 @@
 
 
 {{-- Products --}}
-<div class="container rounded-5 text-center pb-3 px-3 mb-5 text-primary-emphasis bg-light-subtle border border-3">
-    <h1 class="container-fluid pt-5 pb-3 my-5 display-4 text-center">Produtos</h1>
+<div class="container rounded-5 text-center pb-1 px-3 mb-5 text-primary-emphasis bg-dark-subtle border border-3 border-shadow">
+    <p class="pt-5 pb-1 my-2 col-12 bolder fs-1 text-center">Produtos</p>
     <div class="container text-center mx-auto px-auto my-5 py-5 ">
         <div class="row  align-items-center justify-content-evenly">
-            <div class="col-sm-3 card pt-2 bg-info-subtle">
-                <div class="card-header bg-light-subtle">Copos</div>
+            <div class="col-sm-3 card pt-2 bg-light text-dark border border-4 rounded rounded-4 border-shadow-3 ">
+                <div class="card-header bg-light">Copos</div>
                 <img src="{{ asset('img/cat-copo.webp') }}"
                     class="img-card-top">
                 <div class="card-body">
@@ -28,8 +28,8 @@
                     <a href="#" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>
-            <div class="col-sm-3 card pt-2 bg-info-subtle">
-                <div class="card-header bg-light-subtle">Tampas</div>
+            <div class="col-sm-3 card pt-2 bg-light text-dark border border-4 rounded rounded-4 border-shadow-3 ">
+                <div class="card-header bg-light">Tampas</div>
                 <img src="{{ asset('img/cat-tampa.webp') }}"
                     class="img-card-top">
                 <div class="card-body">
@@ -40,8 +40,8 @@
                     <a href="#" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>
-            <div class="col-sm-3 card pt-2 bg-info-subtle">
-                <div class="card-header bg-light-subtle">Pratos</div>
+            <div class="col-sm-3 card pt-2 bg-light text-dark border border-4 rounded rounded-4 border-shadow-3 ">
+                <div class="card-header bg-light">Pratos</div>
 
                 <img src="{{ asset('img/cat-prato.jpg') }}"
                     class="img-card-top">
