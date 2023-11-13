@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product/list_products');
+        return route('list_products');
     }
 
     /**
@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product/product_insertion_form');
+        return route('insert_product');
     }
 
     /**
@@ -48,16 +48,16 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('product.products_insertion_form')->with('success', 'Product has been successfully added');
+        return redirect()->route('insert_product')->with('success', 'Product has been successfully added');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Request $request)
     {
-        //
+        return redirect()->route('show_product')->with('product_id', $request);
     }
 
     /**

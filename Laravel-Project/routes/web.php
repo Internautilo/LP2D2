@@ -22,3 +22,7 @@ Route::get('/categorias', function() {
     return view('product-categories');
 })->name('categories');
 
+Route::get('/listar_produtos', function(){
+    return view('product.list_products');
+} )->name('list_products');
+
