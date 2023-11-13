@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('product/list_products');
     }
 
     /**
@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product/product_insertion_form');
     }
 
     /**
@@ -28,7 +28,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedRequest = $request->validate([
+            'name' => 'required',
+            'description' => 'required|string',
+            'category' => 'required|string',
+            'price' => 'required|float',
+            'stock_quantity' => 'integer',
+            'status' => 'string',
+        ]);
+
+        $product = new Product;
+
+        $product->name = $validatedRequest['name'];
+        $product->description = $validatedRequest['description'];
+        $product->category = $validatedRequest['category'];
+        $product->price = $validatedRequest['price'];
+        $product->stock_quantity = $request->input('stock_quantity', 0); 
+        $product->status = $request->input('status', 'inactive');
+
+        $product->save();
+
+        return redirect()->route('product.products_insertion_form')->with('success', 'Product has been successfully added');
+
     }
 
     /**
