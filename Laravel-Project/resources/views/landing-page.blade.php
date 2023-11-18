@@ -49,7 +49,7 @@
                     <h5 class="card-title">Prato plástico descartável</h5>
                     <p class="card-text">Pratos descartáveis em poliestireno (PS) combinam praticidade e resistência.
                         Com design elegante, são ideais para eventos e festas. Leves e duráveis, facilitam o serviço de
-                        refeições, proporcionando uma experiência agradável.</p>
+                        refeições, proporcionando uma experiência sempre agradável.</p>
                     <a href="#" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>

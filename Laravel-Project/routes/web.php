@@ -29,7 +29,7 @@ Route::get('/listar_produtos', function(){
 } )->name('list_products');
 
 Route::get('/inserir_produto', function () {
-    return view('produtct.insert_product');
+    return view('product.insert_product');
 })->name('product_insertion_form');
 
 
