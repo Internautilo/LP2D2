@@ -49,5 +49,5 @@ Route::get('/listar_produtos/{category?}', function( ?string $category) {
 
 //ROUTES POST
 
-Route::post('/inserir_produto', [ProductController::class, 'store']);
+Route::post('/inserir_produto', [ProductController::class, 'store'])->name('insert_product');
 

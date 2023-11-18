@@ -32,7 +32,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required|string',
             'category' => 'required|string',
-            'price' => 'required|float',
+            'price' => 'required|numeric',
             'stock_quantity' => 'integer',
             'status' => 'string',
             'product_image' => 'image',
@@ -61,7 +61,7 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->route('insert_product')->with('success', 'Product has been successfully added');
-
+        
     }
 
     /**
