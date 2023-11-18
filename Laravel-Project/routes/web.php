@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,12 +25,21 @@ Route::get('/categorias', function() {
     return view('product.product-categories');
 })->name('categories');
 
-Route::get('/listar_produtos', function(){
-    return view('product.list_products');
-} )->name('list_products');
 
 Route::get('/inserir_produto', function () {
     return view('product.insert_product');
 })->name('product_insertion_form');
+
+Route::get('/listar_produtos/{category?}', function( ?string $category) {
+
+    if(isset($category)){
+        $products = Product::all();
+        return view('product.list-product-by-category')->with(['category' => $category, 'products' => $products]);
+    } else {
+        return view('product-categories');
+    }
+        
+    
+})->name('list_products');
 
 
