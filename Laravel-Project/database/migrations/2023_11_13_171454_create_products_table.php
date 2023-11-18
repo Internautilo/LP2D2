@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('price', 8, 2);
             $table->integer('stock_quantity');
             $table->enum('status', ['active', 'inactive']);
+            $table->string('product_image');
             $table->timestamps();
             $table->softDeletes();
         });

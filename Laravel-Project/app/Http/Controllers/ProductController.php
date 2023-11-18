@@ -35,6 +35,8 @@ class ProductController extends Controller
             'price' => 'required|float',
             'stock_quantity' => 'integer',
             'status' => 'string',
+            'product_image' => 'image',
+            
         ]);
 
         $product = new Product;
@@ -45,6 +47,16 @@ class ProductController extends Controller
         $product->price = $validatedRequest['price'];
         $product->stock_quantity = $request->input('stock_quantity', 0); 
         $product->status = $request->input('status', 'inactive');
+
+        if($request->hasFile('product_image'))
+        {
+            $file = $request->file('product_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/products/', $filename);
+
+            $product->product_image = $filename;
+        }
 
         $product->save();
 
