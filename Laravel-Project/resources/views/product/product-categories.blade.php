@@ -17,7 +17,7 @@
                     <p class="card-text">Copos plásticos descartáveis em polipropileno (PP), ideais para eventos e
                         festas. Leves, resistentes e ecologicamente corretos. Com capacidade de variadas, são a escolha
                         perfeita para servir bebidas com praticidade e sustentabilidade.</p>
-                    <a href="{{ route('list_product', 'copo') }}" class="btn btn-primary">Ver mais</a>
+                    <a href="{{ route('list_products', 'copo') }}" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>
             <div class="col-sm-3 card pt-2 bg-light text-dark border border-4 rounded rounded-4 border-shadow-3 ">
@@ -29,7 +29,7 @@
                     <p class="card-text">Tampas descartáveis em poliestireno (PS) com encaixe perfeito em nossos copos. Feitas para
                         vedação segura, garantindo higiene e evitando derramamentos. Práticas para eventos, mantêm a
                         qualidade das bebidas.</p>
-                    <a href="{{ route('list_product', 'tampa') }}" class="btn btn-primary">Ver mais</a>
+                    <a href="{{ route('list_products', 'tampa') }}" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>
             <div class="col-sm-3 card pt-2 bg-light text-dark border border-4 rounded rounded-4 border-shadow-3 ">
@@ -42,7 +42,7 @@
                     <p class="card-text">Pratos descartáveis em poliestireno (PS) combinam praticidade e resistência.
                         Com design elegante, são ideais para eventos e festas. Leves e duráveis, facilitam o serviço de
                         refeições, proporcionando uma experiência sempre agradável.</p>
-                    <a href="{{ route('list_product', 'prato') }}" class="btn btn-primary">Ver mais</a>
+                    <a href="{{ route('list_products', 'prato') }}" class="btn btn-primary">Ver mais</a>
                 </div>
             </div>
             
