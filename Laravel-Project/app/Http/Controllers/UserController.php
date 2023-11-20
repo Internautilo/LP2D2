@@ -39,6 +39,9 @@ class UserController extends Controller
         return redirect()->route('user_signup')->with('success', 'Usuario cadastrado com successo');
     }
 
+    /*
+    * Logs the user
+    */
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -53,6 +56,19 @@ class UserController extends Controller
         }
 
         return redirect()->route('user_login')->withErrors('email', 'Usuario não encontrado')->onlyInput('email');
+    }
+
+    /*
+    * Logs out the user
+    */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
     /**

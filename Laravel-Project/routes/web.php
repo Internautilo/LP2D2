@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,11 @@ Route::get('/login', function() {
 Route::get('/signup', function(){
     return view('user.signup');
 })->name('user_signup');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/conta', function(){
+    $user = Auth::user();
+    return view('user.account')->with(['user' => $user]);
+})->name('account');
 
     // POST
 Route::post('/signup', [UserController::class, 'store']);

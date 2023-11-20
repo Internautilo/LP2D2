@@ -11,8 +11,24 @@
 </head>
 
 
-<body>
 
+
+<body>
+    {{-- Modal --}}
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Deseja realizar o logout ?</h5>
+              </div>
+              
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+              </div>
+          </div>
+      </div>
+  </div>
 
     {{-- Navbar --}}
     <nav>
@@ -30,7 +46,6 @@
                 <li><a href="#" class="nav-link px-2">Sobre nós</a></li>
                 <li><a href="#" class="nav-link px-2">Contato</a></li>
             </ul>
-
             <div class="col-md-3 text-end">
 
                 @if (Auth::check())
@@ -43,11 +58,11 @@
                             {{ $user->name }}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">Conta</a></li>
+                            <li><a href="{{ route('account') }}" class="dropdown-item">Conta</a></li>
                             <li>
                                 <div class="dropdown-divider"></div>
                             </li>
-                            <li><a href="#" class="dropdown-item">Sair</a></li>
+                            <li><a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Sair</a></li>
                         </ul>
                     </div>
                 @else
