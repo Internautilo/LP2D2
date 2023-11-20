@@ -5,13 +5,13 @@
 @section('content')
 
     @if (Auth::check())
-        <div class="container">
+        <div class="container" data-bs-theme="light">
             <hr class="vr invisible">
             <div class="card">
-                <div class="card-header">
-                    <h5>{{ $user->name }}</h5>
+                <div class="card-header bg-dark text-light">
+                    <h5>Usuário: {{ $user->name }}</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body bg-dark-subtle">
                     <div class="card">
                         <div class="card-body row">
                             <div class="row justify-content-center align-items-center">
@@ -41,7 +41,7 @@
                                     </form>
                                 </div>
                                 <div class="col-sm-12">
-                                    <form action="{{ route('account') }}" method="post" class="form" enctype="multipart/form-data">
+                                     <form action="{{ route('account') }}" method="post" class="form" enctype="multipart/form-data">
                                         <p>Adicionar/Alterar foto</p>
                                         <div class="input-group mb-3">
                                             <input type="file" class="form-control" name="profile_image" placeholder="{{ $user->email }}"

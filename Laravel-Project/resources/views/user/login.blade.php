@@ -15,8 +15,8 @@
                 </div>
             @endif
 
-            <div class="card col-sm-12 justify-content-center-center bg-primary-subtle" style="width: 50rem">
-                <div class="card-body row  justify-content-center">
+            <div class="card col-sm-12 justify-content-center-center bg-dark-subtle" style="width: 50rem">
+                <div class="card-body row justify-content-center">
                     <div class="card  col-sm-12 ">
                         <div class="card-header text-center bg-body-secondary mt-3 rounded">
                             <h4 class="pt-2">Login</h4>

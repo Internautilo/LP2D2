@@ -14,15 +14,18 @@
                 <div class="card-body text-center bg-light-subtle row justify-content-center align-items-center">
                     @foreach ($products as $product)
                         @if ($product['category'] == $category && $product['status'] == 'active')
-                            <div class="card col-sm-3 bg-light text-dark my-2 mx-2">
-                                <div class="card-header bg-dark-subtle text-light-emphasis">
-                                    {{ $product['name'] }}
-                                </div>
-                                <img src="/uploads/products/{{ $product['product_image'] }}" class="card-img-top">
-                                <div class="card-body">
-                                    <p>{{ $product['description'] }}</p>
-                                    <p class="bg-light-subtle rounded rounded-5 text-success-emphasis">R$
-                                        {{ $product['price'] }}</p>
+                            <div class="col-sm-3">
+
+                                <div class="card bg-light text-dark my-2 mx-2">
+                                    <div class="card-header bg-dark-subtle text-light-emphasis">
+                                        {{ $product['name'] }}
+                                    </div>
+                                    <img src="/uploads/products/{{ $product['product_image'] }}" class="card-img-top">
+                                    <div class="card-body">
+                                        <p>{{ $product['description'] }}</p>
+                                        <p class="bg-light-subtle rounded rounded-5 text-success-emphasis">R$
+                                            {{ $product['price'] }}</p>
+                                    </div>
                                 </div>
                             </div>
                         @endif
