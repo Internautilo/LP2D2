@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Cadastro de Usuário')
+@section('title', 'Lojinha - Registro')
 
 @section('content')
 
     <div class="container" data-bs-theme="light">
+        <hr class="vr invisible">
+
         <div class="row align-items-center justify-content-center my-5 pt-5 ">
 
             @if (session('success'))
@@ -17,7 +19,7 @@
                 <div class="card-body row  justify-content-center">
                     <div class="card  col-sm-12 ">
                         <div class="card-header text-center bg-body-secondary mt-3 rounded">
-                            <h4 class="pt-3">Cadastro de Usuário</h4>
+                            <h4 class="pt-2">Cadastro de Usuário</h4>
                         </div>
                         <div class="card-body">
 
