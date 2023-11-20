@@ -17,37 +17,40 @@
                             <div class="row justify-content-center align-items-center">
 
                                 <div class="col-sm-12">
-                                    <form action="{{ route('account') }}" method="post" class="form">
+                                    <form action="{{ route('edit_user') }}" method="post" class="form">
+                                        @csrf
                                         <p>Alterar nome</p>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" name="name" placeholder="{{ $user->name }}"
                                                 aria-label="Example text with button addon"
                                                 aria-describedby="button-addon1">
-                                            <button class="btn btn-success" type="button"
+                                            <button class="btn btn-success" type="submit" value="{{ $user->id }}" name="id"
                                                 id="button-addon1">Confirmar</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="col-sm-12">
-                                    <form action="{{ route('account') }}" method="post" class="form">
+                                    <form action="{{ route('edit_user') }}" method="post" class="form">
+                                        @csrf
                                         <p>Alterar email</p>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" name="email" placeholder="{{ $user->email }}"
                                                 aria-label="Example text with button addon"
                                                 aria-describedby="button-addon1">
-                                            <button class="btn btn-success" type="button"
+                                            <button class="btn btn-success" type="submit" value="{{ $user->id }}" name="id"
                                                 id="button-addon1">Confirmar</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="col-sm-12">
-                                     <form action="{{ route('account') }}" method="post" class="form" enctype="multipart/form-data">
+                                    <form action="{{ route('edit_user') }}" method="post" class="form" enctype="multipart/form-data">
+                                        @csrf
                                         <p>Adicionar/Alterar foto</p>
                                         <div class="input-group mb-3">
                                             <input type="file" class="form-control" name="profile_image" placeholder="{{ $user->email }}"
                                                 aria-label="Example text with button addon"
                                                 aria-describedby="button-addon1">
-                                            <button class="btn btn-success" type="button"
+                                            <button class="btn btn-success" type="submit"  value="{{ $user->id }}" name="id"
                                                 id="button-addon1">Confirmar</button>
                                         </div>
                                     </form>
@@ -55,17 +58,27 @@
 
                                 {{-- ADMIN ONLY --}}
                                 @if ($user->is_admin == 1)
-                                    <div class="col-sm-6 d-flex justify-content-center">
+                                    <div class="col-sm-4 d-flex justify-content-center">
                                         <form action="{{ route('product_insertion_form') }}" class="form mb-2 mt-5 ">
+                                            @csrf
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary">Adicionar produtos</button>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="col-sm-6 d-flex justify-content-center">
+                                    <div class="col-sm-4 d-flex justify-content-center">
                                         <form action="" class="form mb-2 mt-5 ">
+                                            @csrf
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary">Editar produtos</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-4 d-flex justify-content-center">
+                                        <form action="" class="form mb-2 mt-5 ">
+                                            @csrf
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Listar produtos</button>
                                             </div>
                                         </form>
                                     </div>

@@ -43,6 +43,7 @@ Route::get('/conta', function(){
     // POST
 Route::post('/signup', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/conta', [UserController::class, 'update'])->name('edit_user');
 
 
 
