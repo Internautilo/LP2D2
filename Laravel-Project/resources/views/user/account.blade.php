@@ -75,7 +75,7 @@
                                         </form>
                                     </div>
                                     <div class="col-sm-4 d-flex justify-content-center">
-                                        <form action="" class="form mb-2 mt-5 ">
+                                        <form action="{{ route('list_all_products') }}" class="form mb-2 mt-5 ">
                                             @csrf
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary">Listar produtos</button>

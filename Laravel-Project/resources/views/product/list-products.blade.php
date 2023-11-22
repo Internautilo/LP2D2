@@ -1,55 +1,122 @@
+@php
+    use App\Models\Product;
+    $products = Product::all();
+@endphp
+
 @extends('layouts.app')
 
 @section('title', 'Listagem de Produtos')
 
 @section('content')
 
-<div class="container" data-bs-theme="light">
-    <hr class="vr invisible">
-    <div class="card">
-        <div class="card-body bg-dark-subtle">
-            <div class="card">
-                <div class="card-header bg-dark-subtle">
-                    <h4>Lista de produtos</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <div class="col-sm-3">
-                                <div class="card bg-light text-dark my-2 mx-2">
-                                    <div class="card-header bg-dark-subtle text-light-emphasis">
-                                        Nome produto
-                                    </div>
-                                    <img src="/uploads/products/" class="card-img-top">
-                                    <div class="card-body">
-                                        <div class="row justify-content-center align-items-center">
-                                            <div class="col-sm-6 d-flex justify-content-center">
-                                                <form action="" method="post">
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Editar
-                                                    </button>
-                                                </form>
+    <div class="container" data-bs-theme="light">
+        <hr class="vr invisible">
+        <div class="card">
+            <div class="card-body bg-dark-subtle">
+                <div class="card">
+                    <div class="card-header bg-dark-subtle">
+                        <h4>Lista de produtos</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-start ">
+                            @foreach ($products as $product)
+                                @if (!$product->deleted_at) 
+                                    <div class="col-sm-3">
+                                        <div class="card bg-light text-dark my-2 mx-2">
+                                            <div class="card-header bg-dark-subtle text-light-emphasis">
+                                                {{ $product->name }}
                                             </div>
-                                            <div class="col-sm-6 d-flex justify-content-center">
-                                                <form action="" method="post">
-                                                    <button type="submit" class="btn btn-danger">
-                                                        Deletar
-                                                    </button>
-                                                </form>
+                                            <img src="/uploads/products/{{ $product->product_image }}" class="card-img-top">
+                                            <div class="card-body">
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-sm-6 mt-2 d-grid justify-content-center">
+                                                        <button href="#" class="btn btn-primary" data-bs-toggle="modal"
+                                                            data-bs-target="#editModal{{ $product->product_id }}">Editar</button>
+                                                    </div>
+                                                    <div class="col-sm-6 mt-2 d-flex justify-content-center">
+                                                        <button href="#" class="btn btn-danger" data-bs-toggle="modal"
+                                                            data-bs-target="#deleteModal{{ $product->product_id }}">Deletar</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                                    {{-- editModal --}}
+                                    <div class="modal fade" id="editModal{{ $product->product_id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Deseja Editar o produto:
+                                                    </h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{ $product->name }}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                    <form action="" method="post" class="form">
+                                                        <button type="submit" class="btn btn-outline-primary">
+                                                            Confirmar
+                                                        </button>
+                                                        <input type="hidden" name="id" value="{{ $product->product_id }}">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- editModal --}}
+                                    {{-- deleteModal --}}
+                                    <div class="modal fade" id="deleteModal{{ $product->product_id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Deseja realizar o logout ?
+                                                    </h5>
+                                                </div>
+    
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                    <form action="" method="post" class="form">
+                                                        <button type="submit" class="btn btn-outline-danger">
+                                                            Confirmar
+                                                        </button>
+                                                        <input type="hidden" name="id" value="{{ $product->product_id }}">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- deleteModal --}}
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
-</div>
 
 @endsection
+
+
+
+{{-- Modal --}}
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Deseja realizar o logout ?</h5>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Modal --}}
