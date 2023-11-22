@@ -5,7 +5,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +70,14 @@ Route::get('/produtos/{category?}', function( ?string $category) {
 Route::get('/listar_produtos', function() {
     return view('product.list-products');
 })->name('list_all_products');
+Route::get('/editar_produto', function() {
+    return view('product.edit-product');
+})->name('edit_product');
 
     // POST
 Route::post('/inserir_produto', [ProductController::class, 'store'])->name('insert_product');
-
+Route::post('/editar_produto', function(Request $request){
+    $id = $request->input('id');
+    return view('product.edit-product')->with('id', $id);
+})->name('edit_product_post');
+Route::post('/atualizar_produto', [ProductController::class, 'update'])->name('update_product');
